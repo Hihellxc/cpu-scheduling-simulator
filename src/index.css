@@ -887,9 +887,22 @@ th {
   border: 1px solid var(--border);
   background: var(--panel-alt);
   border-radius: var(--radius);
-  padding: 12px 13px;
+  padding: 15px 17px;
   cursor: pointer;
   transition: border-color 0.15s, background 0.15s;
+}
+
+.scenario-card .name {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.scenario-card .hint {
+  color: var(--text-dim);
+  font-size: 12.5px;
+  margin-top: 5px;
+  line-height: 1.5;
 }
 
 .scenario-card:hover {
@@ -955,6 +968,19 @@ th {
 @keyframes scenarioToastOut {
   from { opacity: 1; }
   to { opacity: 0; }
+}
+
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+@media (min-width: 700px) {
+  .scenario-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 /* Algorithm info */
