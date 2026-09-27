@@ -134,20 +134,24 @@ export default function ProcessInput({ processes, setProcesses, errors }) {
         </button>
       </div>
 
-      <div className="generator-row">
-        <Dices size={16} color="var(--text-dim)" />
-        <label htmlFor="gen-count">Random Process Generator — จำนวน Process</label>
-        <input
-          id="gen-count"
-          type="number"
-          min="1"
-          max="50"
-          value={genCount}
-          onChange={(e) => setGenCount(Number(e.target.value))}
-        />
-        <button className="btn ghost" onClick={generateRandom}>
-          <Dices size={15} /> Generate
-        </button>
+      <div className="generator-block">
+        <label htmlFor="gen-count" className="generator-label">
+          <Dices size={16} color="var(--text-dim)" />
+          Random Process Generator — จำนวน Process
+        </label>
+        <div className="generator-controls">
+          <input
+            id="gen-count"
+            type="number"
+            min="1"
+            max="50"
+            value={genCount}
+            onChange={(e) => setGenCount(Number(e.target.value))}
+          />
+          <button className="btn ghost" onClick={generateRandom}>
+            <Dices size={15} /> Generate
+          </button>
+        </div>
       </div>
 
       {errors.length > 0 && (

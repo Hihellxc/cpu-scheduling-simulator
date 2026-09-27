@@ -1012,3 +1012,32 @@ th {
     scroll-behavior: auto !important;
   }
 }
+
+
+/*Gerater*/
+.generator-block {
+  margin-top: 18px;
+  padding-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.generator-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--text-dim);
+}
+
+.generator-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.generator-controls input {
+  max-width: 140px;
+}
