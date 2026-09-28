@@ -9,8 +9,6 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES_Modules-F7DF1E?logo=javascript&logoColor=black)
 ![Recharts](https://img.shields.io/badge/Recharts-Charts-22B5BF)
 
-🌐 **[Live Demo](https://hihellxc.github.io/cpu-scheduling-simulator/)**
-
 </div>
 
 ---
@@ -76,6 +74,12 @@ instead of appearing only as a static result table.
 
 ## 🧮 6. Metrics
 
+```
+Turnaround Time = Completion Time − Arrival Time
+Waiting Time    = Turnaround Time − Burst Time
+Response Time   = First Start Time − Arrival Time
+```
+
 The averages (Waiting / Turnaround / Response Time), CPU Utilization (% of time the CPU is not idle), and Throughput are all computed from the actual simulated timeline. Nothing is hard-coded. ✅
 
 ## 🎞️ 7. Animation System
@@ -91,7 +95,7 @@ The averages (Waiting / Turnaround / Response Time), CPU Utilization (% of time 
 
 - ⚛️ React 18 + Vite
 - 📜 JavaScript (ES Modules)
-- 🎨 CSS (Custom Properties / Design Tokens in the existing `src/index.css`)
+- 🎨 CSS (Custom Properties / Design Tokens in `src/index.css`)
 - 📊 [Recharts](https://recharts.org/): Bar Chart for performance comparison
 - 🖼️ [lucide-react](https://lucide.dev/): icons
 
@@ -132,16 +136,65 @@ npm run preview
 12. 📚 Read Algorithm Information to review how each algorithm works.
 13. 💾 Click **Export CSV** to save the results for later use.
 
+## 🗂️ 12. Project Structure
+
+```
+src/
+├── algorithms/            # Scheduling logic: pure computation, no UI
+│   ├── fcfs.js
+│   ├── sjf.js
+│   ├── roundRobin.js
+│   └── priority.js
+├── simulation/
+│   ├── simulationEngine.js  # derives process state / ready queue / event log
+│   └── useTimeline.js       # play/pause/step/speed timeline controller
+├── data/
+│   ├── scenarios.js         # preset scenario datasets
+│   └── algorithmInfo.js     # descriptions of each algorithm
+├── utils/
+│   ├── calculations.js      # simulate(), metrics, colors, validation
+│   └── export.js            # CSV export
+├── components/
+│   ├── Header.jsx
+│   ├── ScenarioPicker.jsx
+│   ├── ProcessInput.jsx
+│   ├── AlgorithmSelector.jsx
+│   ├── SimulationStage.jsx  # assembles the whole visualization page
+│   ├── ProcessStage.jsx     # Process Cards
+│   ├── ReadyQueue.jsx
+│   ├── CPUView.jsx
+│   ├── GanttChart.jsx
+│   ├── GanttPlayer.jsx      # used in Compare All mode
+│   ├── PlayerControls.jsx
+│   ├── EventLog.jsx
+│   ├── ProcessTable.jsx
+│   ├── Statistics.jsx
+│   ├── ComparisonChart.jsx
+│   ├── AlgorithmInfo.jsx
+│   └── Collapsible.jsx
+├── App.jsx
+├── main.jsx
+└── index.css                # global styles and design tokens
+```
+
+## 💡 13. Example
+
+```
+P1: AT=0 BT=5 Priority=2
+P2: AT=1 BT=3 Priority=1
+P3: AT=2 BT=8 Priority=3
+P4: AT=3 BT=2 Priority=2
+```
 
 Running with FCFS gives the order **P1 → P2 → P3 → P4** (by arrival). The Average Waiting Time, Turnaround Time, and Response Time appear in the Statistics section right after you click Run Simulation. 🎉
 
-## 📋 12. Requirements
+## 📋 14. Requirements
 
 - 🟢 Node.js 18+
 - 📦 npm
 - 🌐 A modern browser (latest Chrome, Edge, Firefox, or Safari)
 
-## 👥 14. Team Responsibilities
+## 👥 15. Team Responsibilities
 
 Work split for a team of 5:
 
