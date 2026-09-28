@@ -1,230 +1,156 @@
-# CPU Scheduling Simulator
+<div align="center">
 
-Interactive CPU Scheduling Algorithm Visualization — จำลองการทำงานของ CPU
-Scheduling แบบ Step-by-Step พร้อม Animation, Ready Queue, CPU View และ
-Event Log ที่คำนวณจากอัลกอริทึมจริงทั้งหมด ไม่มีข้อมูล Hard-code
+# 🖥️ CPU Scheduling Simulator
 
-## 1. About
+**An interactive CPU scheduling algorithm visualizer** ⚡
 
-CPU Scheduling Simulator เป็นเว็บแอปพลิเคชันสำหรับจำลองและเปรียบเทียบ
-อัลกอริทึมการจัดตาราง CPU (CPU Scheduling Algorithm) ผู้ใช้กำหนด Process
-เอง (หรือใช้ Scenario สำเร็จรูป / Random Generator) ระบบจะคำนวณลำดับการ
-ทำงานของ CPU จริงตามอัลกอริทึมที่เลือก แล้วนำเสนอผลลัพธ์ผ่าน Animation
-แบบ Interactive — Process เคลื่อนที่ระหว่าง New → Ready Queue → CPU →
-Completed ให้เห็นแบบเป็นขั้นตอน แทนที่จะแสดงเพียงตารางผลลัพธ์นิ่ง ๆ
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES_Modules-F7DF1E?logo=javascript&logoColor=black)
+![Recharts](https://img.shields.io/badge/Recharts-Charts-22B5BF)
 
-## 2. Objectives
+🌐 **[Live Demo](https://hihellxc.github.io/cpu-scheduling-simulator/)**
 
-- ช่วยให้นักศึกษาวิชาระบบปฏิบัติการ (Operating Systems) เข้าใจหลักการทำงาน
-  ของ CPU Scheduling ผ่านการมองเห็น Process เคลื่อนที่จริง ไม่ใช่แค่อ่านตาราง
-- ให้ผู้ใช้เปรียบเทียบพฤติกรรมของอัลกอริทึมต่าง ๆ บนข้อมูล Process ชุดเดียวกัน
-- แสดงการคำนวณ Waiting Time, Turnaround Time และ Response Time ทีละขั้นตอน
-  อย่างถูกต้องตามหลักวิชา โดยอ้างอิงจาก Timeline ที่จำลองจริงเท่านั้น
+</div>
 
-## 3. Features
+---
 
-**Process & Scenario Management**
-- เพิ่ม / แก้ไข / ทำสำเนา (Duplicate) / ลบ / Clear All Process ได้อย่างอิสระ
-- Random Process Generator — สุ่มสร้าง Process ได้ตามจำนวนที่กำหนด (1–50 ตัว)
-- Scenario / Preset สำเร็จรูป 7 แบบ: Basic, Same Arrival Time, Different
-  Arrival Time, Short Jobs, Long Jobs, Round Robin Example, Priority Example
-- ตรวจสอบความถูกต้องของข้อมูล (Validation) ก่อนรัน พร้อมข้อความแจ้งเตือน
+Simulates CPU scheduling step by step, with animation, a Ready Queue, a CPU View, and an Event Log, all computed from the real algorithms with **no hard-coded data**. 🎯
 
-**Interactive CPU Visualization**
-- Process Card แสดงสถานะ NEW / READY / RUNNING / COMPLETED พร้อม Visual
-  Highlight เมื่อ Process กำลังทำงาน
-- Ready Queue แบบ Interactive เรียงลำดับตามคิวจริงของอัลกอริทึมที่เลือก
-- CPU View แสดง Process ที่กำลังรัน, Remaining Time และ Progress Bar
-- Gantt Chart แบบสัดส่วนเวลาจริง พร้อม Playhead และ CPU Idle Block
-- Event Log แสดงเหตุการณ์ตามเวลาจริง (Arrival, Selected, Resumed, Requeued,
-  Completed, Idle)
-- ระบบ Animation ควบคุมได้: Play / Pause / Next Step / Previous Step /
-  Reset พร้อม Speed Control 0.5x / 1x / 2x / 4x และ Scrub Bar
-- รองรับ `prefers-reduced-motion` — ปิด Animation ที่ยาวและเปลี่ยนสถานะทันที
+## 📖 1. About
 
-**Algorithms & Analysis**
-- จำลองอัลกอริทึม FCFS, SJF (Non-Preemptive), Round Robin (Preemptive)
-  และ Priority Scheduling (Non-Preemptive)
-- โหมด Compare All เพื่อรันทุกอัลกอริทึมพร้อมกันด้วยข้อมูล Process เดียวกัน
-  พร้อม Bar Chart เปรียบเทียบ (ไม่มีการชี้ว่าอัลกอริทึมใด "ดีที่สุด")
-- Statistics Card: Average Waiting / Turnaround / Response Time, CPU
-  Utilization และ Total Execution Time
-- Algorithm Information — คำอธิบาย หลักการทำงาน ประเภท Preemptive /
-  Non-Preemptive ข้อควรสังเกต และตัวอย่างของแต่ละอัลกอริทึม
-- Export CSV ของผลลัพธ์ Process ทั้งหมด
+CPU Scheduling Simulator is a web application for simulating and comparing CPU scheduling algorithms. Users define their own processes (or use a preset scenario or the random generator). The system computes the actual CPU execution order for the selected algorithm and presents the result through an interactive animation.
 
-## 4. Scheduling Algorithms
+Processes move step by step through:
 
-**FCFS (First Come, First Served)** — Non-preemptive
-Process ที่มี Arrival Time น้อยที่สุดจะได้ CPU ก่อนและทำงานจนเสร็จ
+🆕 New → 📋 Ready Queue → ⚙️ CPU → ✅ Completed
 
-**SJF (Shortest Job First)** — Non-preemptive
-เมื่อ CPU ว่าง จะเลือก Process ที่มาถึงแล้วและมี Burst Time สั้นที่สุด
+instead of appearing only as a static result table.
 
-**Round Robin** — Preemptive
-แบ่งเวลา CPU เป็นช่วงตาม Time Quantum แล้วหมุนให้ทุก Process ได้ใช้ CPU
-ตามลำดับคิว โดย Process ที่มาถึงใหม่ระหว่างรอบจะถูกเข้าคิวก่อน Process
-ที่ใช้ Quantum หมดแล้วถูกส่งกลับเข้าคิว
+## 🎯 2. Objectives
 
-**Priority Scheduling** — Non-preemptive
-เลือก Process ตามค่า Priority โดย **เลขน้อยกว่า = สำคัญกว่า**
+- 🎓 Help Operating Systems students understand how CPU scheduling works by watching processes move, rather than just reading tables.
+- ⚖️ Let users compare the behavior of different algorithms on the same set of processes.
+- 🧮 Show the calculation of Waiting Time, Turnaround Time, and Response Time step by step, accurately and based only on the simulated timeline.
 
-## 5. Scheduling Rules
+## ✨ 3. Features
 
-- SJF ใช้แบบ **Non-Preemptive** — Process ที่เริ่มรันแล้วจะรันจนจบเสมอ
-- Priority Scheduling ใช้แบบ **Non-Preemptive**
-- Priority: **Priority Number ที่น้อยกว่า = Priority สูงกว่า**
-- Round Robin ใช้ **Time Quantum** ที่ผู้ใช้กำหนดได้ (ค่าเริ่มต้น = 2)
-- ทุก Algorithm ใช้ Arrival Time / Process ID เป็น Tie Breaker ตามลำดับ
-  เมื่อค่าตัดสินหลักเท่ากัน
+### 🗂️ Process & Scenario Management
+- ➕ Freely add / ✏️ edit / 📑 duplicate / 🗑️ delete processes, or clear all.
+- 🎲 Random Process Generator: create 1–50 processes at a time.
+- 📦 7 preset scenarios: Basic, Same Arrival Time, Different Arrival Time, Short Jobs, Long Jobs, Round Robin Example, Priority Example.
+- 🛡️ Input validation before running, with clear warning messages.
 
-## 6. Metrics
+### 🎬 Interactive CPU Visualization
+- 🃏 Process Cards show 🆕 NEW / 🟡 READY / 🟢 RUNNING / ✅ COMPLETED states, with a visual highlight on the running process.
+- 📋 Interactive Ready Queue, ordered by the real queue of the selected algorithm.
+- ⚙️ CPU View shows the running process, its remaining time, and a progress bar.
+- 📊 Gantt Chart with proportional time scale, a playhead, and CPU Idle blocks.
+- 📝 Event Log showing real-time events (Arrival, Selected, Resumed, Requeued, Completed, Idle).
+- ▶️ Animation controls: Play / Pause / Next Step / Previous Step / Reset, Speed Control (0.5x / 1x / 2x / 4x), and a scrub bar.
+- ♿ Supports `prefers-reduced-motion`: long animations are disabled and state changes are applied instantly.
 
-```
-Turnaround Time = Completion Time − Arrival Time
-Waiting Time    = Turnaround Time − Burst Time
-Response Time   = First Start Time − Arrival Time
-```
+### 📈 Algorithms & Analysis
+- 🧠 Simulates FCFS, SJF (Non-Preemptive), Round Robin (Preemptive), and Priority Scheduling (Non-Preemptive).
+- 🆚 Compare All mode runs every algorithm on the same process data, with a comparison bar chart (it does not declare any algorithm the "best").
+- 📉 Statistics Card: Average Waiting / Turnaround / Response Time, CPU Utilization, and Total Execution Time.
+- 📚 Algorithm Information: description, how it works, Preemptive / Non-Preemptive type, things to note, and an example for each algorithm.
+- 💾 Export all process results as CSV.
 
-ค่าเฉลี่ย (Average Waiting / Turnaround / Response Time), CPU Utilization
-(% ของเวลาที่ CPU ไม่ Idle) และ Throughput คำนวณจาก Timeline ที่จำลองจริง
-ทั้งหมด ไม่มีการ Hard-code ค่าใด ๆ
+## 🧩 4. Scheduling Algorithms
 
-## 7. Animation System
+| Algorithm | Type | How it works |
+|---|---|---|
+| 🥇 **FCFS** (First Come, First Served) | Non-preemptive | The process with the earliest Arrival Time gets the CPU first and runs to completion. |
+| ⚡ **SJF** (Shortest Job First) | Non-preemptive | When the CPU becomes free, it picks the arrived process with the shortest Burst Time. |
+| 🔄 **Round Robin** | Preemptive | CPU time is divided into slices of one Time Quantum, and each process takes turns in queue order. A process that arrives during a slice enters the queue before the process whose quantum just expired is requeued. |
+| 👑 **Priority Scheduling** | Non-preemptive | Selects processes by Priority value, where **a lower number means higher priority**. |
 
-- **Play / Pause / Next Step / Previous Step / Reset** — ควบคุม Playhead
-  ของ Simulation ทีละหน่วยเวลา
-- **Speed Control**: 0.5x, 1x, 2x, 4x
-- **Ready Queue** — อัปเดตลำดับ Process ที่รอ CPU ตามผลจริงของอัลกอริทึม
-  ที่เลือก (ไม่ใช่ลำดับ FIFO ตายตัว)
-- **CPU Visualization** — Highlight Process ที่กำลังรัน แสดง Remaining
-  Time และ Progress Bar พร้อม Transition เมื่อเปลี่ยน Process
-- **Gantt Chart** — แสดง Segment ที่ผ่านไปแล้วแบบชัดเจนและ Segment ที่ยัง
-  ไม่ถึงแบบจาง (Dimmed) พร้อม Playhead เคลื่อนที่ตามเวลาจริง
-- Logic ของ Algorithm และ Animation แยกจากกันอย่างเด็ดขาด — Animation เป็น
-  เพียงการนำเสนอผลจาก `src/algorithms/*` และ `src/simulation/simulationEngine.js`
-  เท่านั้น ไม่มีการสร้าง State ปลอมสำหรับ Animation
+## 📏 5. Scheduling Rules
 
-## 8. Technologies
+- 🔒 SJF is **Non-Preemptive**: once a process starts, it always runs to completion.
+- 🔒 Priority Scheduling is **Non-Preemptive**.
+- 🏅 Priority: **a lower Priority Number means higher priority**.
+- ⏱️ Round Robin uses a user-defined **Time Quantum** (default = 2).
+- 🤝 All algorithms use Arrival Time, then Process ID, as tie-breakers when the primary criterion is equal.
 
-- React 18 + Vite
-- JavaScript (ES Modules)
-- CSS (Custom Properties / Design Tokens ในไฟล์เดิม `src/index.css`)
-- [Recharts](https://recharts.org/) — Bar Chart สำหรับ Performance Comparison
-- [lucide-react](https://lucide.dev/) — ไอคอน
+## 🧮 6. Metrics
 
-## 9. Installation
+The averages (Waiting / Turnaround / Response Time), CPU Utilization (% of time the CPU is not idle), and Throughput are all computed from the actual simulated timeline. Nothing is hard-coded. ✅
+
+## 🎞️ 7. Animation System
+
+- ⏯️ **Play / Pause / Next Step / Previous Step / Reset**: control the simulation playhead one time unit at a time.
+- 🚀 **Speed Control**: 0.5x, 1x, 2x, 4x.
+- 📋 **Ready Queue**: updates the order of waiting processes from the real result of the selected algorithm (not a fixed FIFO order).
+- ⚙️ **CPU Visualization**: highlights the running process, shows remaining time and a progress bar, with a transition when the process changes.
+- 📊 **Gantt Chart**: elapsed segments are shown clearly and upcoming segments are dimmed, with the playhead moving in real time.
+- 🧱 Algorithm logic and animation are strictly separated. The animation only presents results from `src/algorithms/*` and `src/simulation/simulationEngine.js`; no fake state is created for animation.
+
+## 🛠️ 8. Technologies
+
+- ⚛️ React 18 + Vite
+- 📜 JavaScript (ES Modules)
+- 🎨 CSS (Custom Properties / Design Tokens in the existing `src/index.css`)
+- 📊 [Recharts](https://recharts.org/): Bar Chart for performance comparison
+- 🖼️ [lucide-react](https://lucide.dev/): icons
+
+## 📦 9. Installation
 
 ```bash
 npm install
 ```
 
-ไม่มี Library เพิ่มเติมนอกเหนือจาก `package.json` ที่มีอยู่แล้ว
+No libraries are needed beyond what is already in `package.json`.
 
-## 10. Run Project
+## ▶️ 10. Run Project
 
 ```bash
 npm run dev
 ```
 
-Build สำหรับ Production:
+Production build:
 
 ```bash
 npm run build
 npm run preview
 ```
 
-## 11. How to Use
+## 🚀 11. How to Use
 
-1. เลือก Scenario / Preset สำเร็จรูป **หรือ** เพิ่ม Process เอง **หรือ**
-   ใช้ Random Process Generator
-2. กำหนด Arrival Time, Burst Time และ Priority ของแต่ละ Process
-3. เลือก Algorithm (FCFS / SJF / Round Robin / Priority)
-4. กำหนด Time Quantum หากเลือก Round Robin
-5. กด **Run Simulation** เพื่อคำนวณผลจริง
-6. ดู Process Card, Ready Queue และ CPU Visualization ที่ส่วน Interactive
-   CPU Visualization
-7. กด **Play** เพื่อดู Animation อัตโนมัติ หรือใช้ **Next / Previous Step**
-   เพื่อดูทีละขั้นตอน ปรับ Speed ได้ตามต้องการ
-8. ดู Gantt Chart ที่ค่อย ๆ เผยขึ้นตาม Playhead
-9. ตรวจสอบ Event Log เพื่อดูลำดับเหตุการณ์ทั้งหมด
-10. ดู Statistics และตาราง Process Results ในส่วน Process Results
-11. เปิด **Compare All** แล้วกด Run Simulation อีกครั้งเพื่อเปรียบเทียบ
-    ทุก Algorithm พร้อมกัน
-12. อ่าน Algorithm Information เพื่อทบทวนหลักการของแต่ละ Algorithm
-13. กด **Export CSV** เพื่อบันทึกผลลัพธ์ไปใช้ต่อ
+1. 📦 Choose a preset scenario, **or** ➕ add processes manually, **or** 🎲 use the Random Process Generator.
+2. ✏️ Set the Arrival Time, Burst Time, and Priority of each process.
+3. 🧠 Select an algorithm (FCFS / SJF / Round Robin / Priority).
+4. ⏱️ Set the Time Quantum if you chose Round Robin.
+5. ▶️ Click **Run Simulation** to compute the real result.
+6. 👀 View the Process Cards, Ready Queue, and CPU Visualization in the Interactive CPU Visualization section.
+7. ⏯️ Click **Play** to watch the animation automatically, or use **Next / Previous Step** to go step by step. Adjust the speed as needed.
+8. 📊 Watch the Gantt Chart reveal itself along the playhead.
+9. 📝 Check the Event Log for the full sequence of events.
+10. 📉 See the Statistics and the Process Results table in the Process Results section.
+11. 🆚 Turn on **Compare All** and click Run Simulation again to compare all algorithms at once.
+12. 📚 Read Algorithm Information to review how each algorithm works.
+13. 💾 Click **Export CSV** to save the results for later use.
 
-## 12. Project Structure
 
-```
-src/
-├── algorithms/            # Scheduling logic — คำนวณล้วน ไม่ยุ่งกับ UI
-│   ├── fcfs.js
-│   ├── sjf.js
-│   ├── roundRobin.js
-│   └── priority.js
-├── simulation/
-│   ├── simulationEngine.js  # derive process state / ready queue / event log
-│   └── useTimeline.js       # play/pause/step/speed timeline controller
-├── data/
-│   ├── scenarios.js         # Preset Scenario datasets
-│   └── algorithmInfo.js     # ข้อความอธิบายแต่ละ Algorithm
-├── utils/
-│   ├── calculations.js      # simulate(), metrics, colors, validation
-│   └── export.js            # CSV export
-├── components/
-│   ├── Header.jsx
-│   ├── ScenarioPicker.jsx
-│   ├── ProcessInput.jsx
-│   ├── AlgorithmSelector.jsx
-│   ├── SimulationStage.jsx  # ประกอบหน้า Visualization ทั้งหมด
-│   ├── ProcessStage.jsx     # Process Cards
-│   ├── ReadyQueue.jsx
-│   ├── CPUView.jsx
-│   ├── GanttChart.jsx
-│   ├── GanttPlayer.jsx      # ใช้ในโหมด Compare All
-│   ├── PlayerControls.jsx
-│   ├── EventLog.jsx
-│   ├── ProcessTable.jsx
-│   ├── Statistics.jsx
-│   ├── ComparisonChart.jsx
-│   ├── AlgorithmInfo.jsx
-│   └── Collapsible.jsx
-├── App.jsx
-├── main.jsx
-└── index.css                # Design System เดิมของ Project (ไม่เปลี่ยนสี)
-```
+Running with FCFS gives the order **P1 → P2 → P3 → P4** (by arrival). The Average Waiting Time, Turnaround Time, and Response Time appear in the Statistics section right after you click Run Simulation. 🎉
 
-## 13. Example
+## 📋 12. Requirements
 
-```
-P1: AT=0 BT=5 Priority=2
-P2: AT=1 BT=3 Priority=1
-P3: AT=2 BT=8 Priority=3
-P4: AT=3 BT=2 Priority=2
-```
+- 🟢 Node.js 18+
+- 📦 npm
+- 🌐 A modern browser (latest Chrome, Edge, Firefox, or Safari)
 
-รันด้วย FCFS → ลำดับ P1, P2, P3, P4 (ตาม Arrival) → Average Waiting Time,
-Turnaround Time และ Response Time จะแสดงในส่วน Statistics ทันทีหลังกด
-Run Simulation
+## 👥 14. Team Responsibilities
 
-## 14. Requirements
+Work split for a team of 5:
 
-- Node.js 18+
-- npm
-- เบราว์เซอร์สมัยใหม่ (Chrome, Edge, Firefox, Safari รุ่นล่าสุด)
-
-## 15. Team Responsibilities
-
-แบ่งงานสำหรับทีม 5 คน:
-
-| คนที่ | ความรับผิดชอบ |
+| Person | Responsibility |
 |---|---|
-| Person 1 | Algorithm: FCFS + SJF (`src/algorithms/fcfs.js`, `sjf.js`) |
-| Person 2 | Algorithm: Round Robin + Priority (`src/algorithms/roundRobin.js`, `priority.js`) |
-| Person 3 | Animation Engine + CPU View + Ready Queue + Step Simulation (`src/simulation/`, `CPUView.jsx`, `ReadyQueue.jsx`, `SimulationStage.jsx`) |
-| Person 4 | Gantt Chart + Statistics + Comparison + Chart (`GanttChart.jsx`, `GanttPlayer.jsx`, `Statistics.jsx`, `ComparisonChart.jsx`) |
-| Person 5 | UI/UX + Process Management + Export + README + Testing (`ProcessInput.jsx`, `ScenarioPicker.jsx`, `utils/export.js`, เอกสาร) |
+| 👤 Person 1 | Algorithms: FCFS + SJF (`src/algorithms/fcfs.js`, `sjf.js`) |
+| 👤 Person 2 | Algorithms: Round Robin + Priority (`src/algorithms/roundRobin.js`, `priority.js`) |
+| 👤 Person 3 | Animation Engine + CPU View + Ready Queue + Step Simulation (`src/simulation/`, `CPUView.jsx`, `ReadyQueue.jsx`, `SimulationStage.jsx`) |
+| 👤 Person 4 | Gantt Chart + Statistics + Comparison + Charts (`GanttChart.jsx`, `GanttPlayer.jsx`, `Statistics.jsx`, `ComparisonChart.jsx`) |
+| 👤 Person 5 | UI/UX + Process Management + Export + README + Testing (`ProcessInput.jsx`, `ScenarioPicker.jsx`, `utils/export.js`, documentation) |
 
-ทุกส่วนสื่อสารกันผ่านโครงสร้างข้อมูลกลาง (`segments`, `table`, `totalTime`
-จาก `simulate()`) จึงพัฒนาแยกกันได้โดยไม่ชนกัน
+All parts communicate through a shared data structure (`segments`, `table`, `totalTime` from `simulate()`), so they can be developed independently without conflicts. 🤝
