@@ -15,6 +15,12 @@
 
 Simulates CPU scheduling step by step, with animation, a Ready Queue, a CPU View, and an Event Log, all computed from the real algorithms with **no hard-coded data**. 🎯
 
+## 🌐 Live Demo
+
+[Open CPU Scheduling Simulator](https://cpu-scheduling-simulator.sharpsun16384.chatgpt.site)
+
+The public website is accessible from any internet connection, including Wi-Fi and mobile data. No sign-in, installation, or connection to the developer's local network is required.
+
 ## 📖 1. About
 
 CPU Scheduling Simulator is a web application for simulating and comparing CPU scheduling algorithms. Users define their own processes (or use a preset scenario or the random generator). The system computes the actual CPU execution order for the selected algorithm and presents the result through an interactive animation.
